@@ -71,9 +71,9 @@ export default class BookFilters extends Vue {
     ));
   }
 
-  colorOnSelection(genre1: string) {
+  colorOnSelection(genre: string) {
     var checkSelection = this.filtredBooks.map((g: any) => g.genre);
-    let existingIndex = checkSelection.findIndex((x: any) => x == genre1);
+    let existingIndex = checkSelection.findIndex((x: any) => x == genre);
     return existingIndex !== -1 ? "primary" : "";
   }
 
@@ -85,7 +85,7 @@ export default class BookFilters extends Vue {
   }
 
   clicked(book: any) {
-    let existingIndex = this.selectedBooks.findIndex((x: any) => x == book);
+    let existingIndex = this.selectedBooks.findIndex((x: any) => x.id == book.id);
     existingIndex === -1
       ? this.selectedBooks.push(book)
       : this.selectedBooks.splice(existingIndex, 1);
